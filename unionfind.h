@@ -1,0 +1,46 @@
+/*
+-------------------------------
+Names: Meilin Lyu, Ze Hui Peng
+IDs: 1577829, 1594884
+CMPUT 275 Winter 2019
+Final Project: Arduino Maze Runner
+-------------------------------
+*/
+
+// Note: this file is taken from CMPUT 275 Lecture 16 code from eClass
+// Source&Credit: Professor Zachary Friggstad
+
+/*
+	Implementation of the union-find data structure
+	for the int type.
+*/
+
+#ifndef _UNION_FIND_H_
+#define _UNION_FIND_H_
+
+#include <unordered_map>
+#include "util.h"
+
+class UnionFind {
+public:
+	// A constructor is not necessary, the parent and rank
+	// mappings will just be empty upon initialization.
+
+	// Adds an item to the data structure, if it was there already
+	// then this does nothing (it does not change the partition).
+	// If not, it is added as a singleton part {v} in the partition.
+	void addItem(int v);
+
+	// Find the representative for the set containing u.
+	int find(int u);
+
+	// Merge the sets, returns true iff the merge was successful
+	// (i.e. they were not in the same set already).
+	// Cannot use the function name "union" :(  It is a keyword in c++.
+	bool merge(int u, int v);
+
+private:
+	std::unordered_map<int, int> parent, rank;
+};
+
+#endif

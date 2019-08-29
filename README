@@ -1,0 +1,129 @@
+-------------------------------
+Names: Meilin Lyu, Ze Hui Peng
+IDs: 1577829, 1594884
+CMPUT 275 Winter 2019
+Final Project: Arduino Maze Runner
+-------------------------------
+
+Included files/folders:
+- /Arduino
+- /Computer
+- README
+
+Note: below are client instructions, for server instructions, please jump to line 77.
+
+-----------------------Client Instructions-----------------------------
+Included files in /Arduino folder:
+- maze_runner.cpp
+- consts.h
+- Makefile
+
+Accessories:
+    * Arduino Mega 2560 Board
+    * Adafruit ILI9341 touchscreen display
+
+Wiring Instructions:
+    (To make TA's job easier, the wiring is exactly the same as assignment 2
+     with the touch screen pins added and the solution buttons used as pin 3)
+
+    First connect GND to GND(negative) bus and 5V to the VCC(positive) bus on the breadboard. 
+    Then follow the wiring requirements below:
+
+    For connecting the display to the Arduino:
+        Display Pin <---> Arduino Pin
+    ======================================
+        GND             GND(negative) bus
+        Vin             VCC(positive) bus
+        CLK             Pin 52
+        MISO            Pin 50
+        MOSI            Pin 51
+        CS              Pin 10
+        D/C             Pin 9
+        CCS             Pin 6
+        Y+              A2 (analog pin)
+        X+              4  (digital pin)
+        Y-              5  (digital pin)
+        X-              A3 (analog pin)
+
+    Note: Any pins unspecified are not connected
+
+    For connecting the joystick to the Arduino:
+    Joystick Pin <--->   Arduino Pin
+    ====================================
+        5V            VCC(positive) bus
+        GND           GND(negative) bus
+        VRx           A1 (analog pin)
+        VRy           A0 (analog pin)
+        SW            Pin 8
+
+    For connecting the solution button to the Arduino:
+    First connect one end of each button to the GND bus, then connect
+    the other end to the pin specified below:
+        Button   <--->    Arduino Pin
+    =================================
+       Solution              3 (digital pin)
+
+Client Running Instruction:
+    Wire up the Arduino with the display and joystick following the Wiring Instructions section, and connect Arduino to the computer. Open terminal and direct to the client folder, type "make upload". If successful, you will see the message 'avrdude done. Thank you.'. Then after running the server, you can play the game using the display screen and the joystick.
+
+Client Assumptions:
+    1. The user is using either VMWare or Virtual Box to execute the code.
+
+Notes: 
+    1. do not open serial-mon while running the client and server, because the serial-mon might take the data that was intenionally to be send to the server.
+
+-----------------End of Client Instructions---------------------
+
+----------------------Server Instructions-----------------------
+Included files in /Computer folder:
+- maze_generator.cpp
+- algorithms.cpp
+- algorithms.h
+- digraph.cpp
+- digraph.h
+- serialport.cpp
+- serialport.h
+- unionfind.cpp
+- unionfind.h
+- util.cpp
+- util.h
+- Makefile
+
+Server Running instruction:
+    put all files in the same directory and open the terminal, type "make",  object files and the executable "maze_generator" should be generated in the same directory. Then type "./maze_generator" to run the server. Then follow the Client instruction to play the game.
+
+Makefile Targets:
+- make / make all: Builds the project, generate all object files and the executable.
+- make algorithms.o: generate only the object file "algorithms.o".
+- make maze_generator.o: generate only the object file "maze_generator.o".
+- make digraph.o: generate only the object file "digraph.o".
+- make serialport.o: generate only the object file "serialport.o".
+- make unionfind.o: generate only the object file "unionfind.o".
+- make util.o: generate only the object file "util.o".
+- make clean: Removes all object files and the executable.
+
+Server Assumptions:
+    1. The user is using either VMWare or Virtual Box to execute the code.
+
+Notes/Credit to sources:
+    1. the randint() function in "util.cpp" is taken from:
+    https://stackoverflow.com/questions/5008804/generating-random-integer-from-a-range
+
+    2. the files "unionfind.cpp" and "unionfind.h" was taken from professor
+       Zac's CMPUT 275 public google drive.
+
+    3. the files "serialport.cpp" and "serialport.h" was taken from eClass
+       (the same files used for assignment 2 part 2)
+
+    4. the files "digraph.cpp" and "digraph.h" was taken from eClass, a few
+       public methods are added to the class.
+
+    5. the function BreadthFirstSearch() in "algorithms.cpp" was taken from 
+       eClass under Lecture 12 codes 
+
+    6. the function Maze_DFS() in "algorithms.cpp" used the pseudocode
+       found from: https://www.algosome.com/articles/maze-generation-depth-first.html
+
+    7. the function Kruskal_MST() in "algorithms.cpp" used the pseudocode found from Lecture 16 slides on eClass.
+
+    8. the function Prim_MST() in "algorithms.cpp" used the pseudocode found from: http://mcicsci.blogspot.com/2013/12/randomized-prims-algorithm.html
