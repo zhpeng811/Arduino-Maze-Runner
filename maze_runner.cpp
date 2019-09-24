@@ -1,11 +1,3 @@
-/*
--------------------------------
-Names: Meilin Lyu, Ze Hui Peng
-IDs: 1577829, 1594884
-CMPUT 275 Winter 2019
-Final Project: Arduino Maze Runner
--------------------------------
-*/
 
 #include <Arduino.h>
 #include <Adafruit_ILI9341.h>
