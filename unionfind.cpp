@@ -1,11 +1,3 @@
-/*
--------------------------------
-Names: Meilin Lyu, Ze Hui Peng
-IDs: 1577829, 1594884
-CMPUT 275 Winter 2019
-Final Project: Arduino Maze Runner
--------------------------------
-*/
 
 // Note: this file is taken from CMPUT 275 Lecture 16 code from eClass
 // Source&Credit: Professor Zachary Friggstad
